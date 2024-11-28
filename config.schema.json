@@ -1,16 +1,29 @@
 {
-  "pluginAlias": "ExampleHomebridgePlugin",
+  "pluginAlias": "Homebridge-NetMan",
   "pluginType": "platform",
   "singular": true,
   "strictValidation": false,
   "schema": {
     "type": "object",
     "properties": {
-      "name": {
-        "title": "Name",
+      "routerIp": {
+        "title": "Router IP",
+        "type": "string",
+        "format": "ip-address",
+        "required": true,
+        "description": "Enter the IP address of your router."
+      },
+      "username": {
+        "title": "Router Username",
         "type": "string",
         "required": true,
-        "default": "Example Dynamic Platform"
+        "description": "Enter the username for your router login."
+      },
+      "password": {
+        "title": "Router Password",
+        "type": "string",
+        "required": true,
+        "description": "Enter the password for your router login."
       }
     }
   }

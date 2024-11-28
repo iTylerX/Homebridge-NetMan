@@ -1,22 +1,26 @@
 {
-  "name": "homebridge-plugin-name",
-  "displayName": "Plugin Name",
+  "name": "homebridge-netman",
+  "displayName": "Homebridge-NetMan",
   "type": "module",
   "version": "1.0.0",
-  "private": true,
-  "description": "A short description about what your plugin does.",
-  "author": "Your Name",
+  "private": false,
+  "description": "A Homebridge plugin to monitor devices connected to your network, track online/offline status, display Wi-Fi stats, and provide optional router controls.",
+  "author": "Tyler Grove",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/USERNAME/GITHUB_PROJECT_NAME#readme",
+  "homepage": "https://github.com/iTylerX/Homebridge-NetMan#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME.git"
+    "url": "https://github.com/iTylerX/Homebridge-NetMan.git"
   },
   "bugs": {
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME/issues"
+    "url": "https://github.com/iTylerX/Homebridge-NetMan/issues"
   },
   "keywords": [
-    "homebridge-plugin"
+    "homebridge-plugin",
+    "network-monitor",
+    "router",
+    "wifi",
+    "device-tracking"
   ],
   "main": "dist/index.js",
   "engines": {
