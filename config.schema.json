@@ -5,20 +5,29 @@
   "schema": {
     "type": "object",
     "properties": {
-      "routerIP": {
+      "bluetoothName": {
         "type": "string",
-        "title": "Router IP Address",
+        "title": "Bluetooth Name of LED Light",
         "required": true
       },
-      "username": {
-        "type": "string",
-        "title": "Router Username",
-        "required": true
-      },
-      "password": {
-        "type": "string",
-        "title": "Router Password",
-        "required": true
+      "devices": {
+        "type": "array",
+        "title": "Devices",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Device Name",
+              "required": true
+            },
+            "mac": {
+              "type": "string",
+              "title": "Device MAC Address",
+              "required": false
+            }
+          }
+        }
       }
     }
   }

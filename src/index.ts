@@ -1,11 +1,10 @@
-import type { API } from 'homebridge';
+import { API } from 'homebridge';
+import { BluetoothLEDPlatform } from './platform';  // Update import to the correct class name
 
-import { ExampleHomebridgePlatform } from './platform.js';
-import { PLATFORM_NAME } from './settings.js';
 
-/**
- * This method registers the platform with Homebridge
- */
+import { PLUGIN_NAME, PLATFORM_NAME } from './settings';
+
+// Default export of the platform
 export default (api: API) => {
-  api.registerPlatform(PLATFORM_NAME, ExampleHomebridgePlatform);
+  api.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, BluetoothLEDPlatform);  // Register NetworkMonitorPlatform
 };

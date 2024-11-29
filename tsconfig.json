@@ -1,24 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "ES2022",  // Keep the target as ES2022
     "lib": [
       "DOM",
       "ES2022"
     ],
     "rootDir": "src",
-    "module": "ES2022",
+    "module": "ES2022",  // ES2022 is fine for modern JavaScript modules
     "moduleResolution": "node",
-    "strict": true,
-    "declaration": true,
-    "outDir": "dist",
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "strict": true,  // Ensure strict type checking
+    "declaration": true,  // Generate .d.ts declaration files
+    "outDir": "dist",  // Output to the 'dist' directory
+    "sourceMap": true,  // Enable source maps for easier debugging
+    "allowSyntheticDefaultImports": true,  // Allow synthetic default imports
+    "esModuleInterop": true,  // Ensure interoperability with CommonJS modules
+    "forceConsistentCasingInFileNames": true,  // Enforce consistent file name casing
+    "skipLibCheck": true  // Skip library checks to speed up compilation
   },
   "include": [
     "eslint.config.js",
     "homebridge-ui",
-    "src"
+    "src"  // Include the 'src' directory for compilation
   ]
 }

@@ -1,11 +1,9 @@
 {
-    "platforms": [
-      {
-        "platform": "Homebridge-NetMan",
-        "name": "Homebridge-NetMan",
-        "routerIp": "192.168.1.1",
-        "username": "admin",
-        "password": "adminpassword"
-      }
-    ]
-  }
+  "platforms": [
+    {
+      "platform": "Homebridge-NetMan",
+      "name": "Homebridge-NetMan",
+      "bluetoothName": "Your Bluetooth LED Light Name"
+    }
+  ]
+}
