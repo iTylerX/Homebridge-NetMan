@@ -112,27 +112,60 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
    * Replace this with your actual logic to connect to the router.
    */
   private async fetchRouterStats(): Promise<{ online: boolean }> {
-    try {
-      // Replace with your router's IP or admin URL
-      const routerUrl = `http://${this.config.routerIP}/status`;
+    const routerIp = this.config.routerIP; // Ensure you add these to your config
+    const username = this.config.username; // Ensure you add these to your config
+    const password = this.config.password; // Ensure you add these to your config
 
-      // Use Axios to fetch the data
-      const response = await axios.get(routerUrl, {
-        auth: {
-          username: this.config.username,
-          password: this.config.password,
+    const loginUrl = `http://${routerIp}/login.html`; // Login URL
+    const statsUrl = `http://${routerIp}/status-and-support.html#sub=41`; // URL to fetch stats or perform actions
+
+    try {
+      // Step 1: Simulate login using POST request
+      const loginResponse = await axios.post(loginUrl, `username=${username}&password=${password}`, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
+        maxRedirects: 0, // Prevent automatic redirects (you may need to handle redirects manually)
+        withCredentials: true, // Ensure cookies are sent along with requests
       });
 
-      // Parse the response data and extract required stats
-      const data = response.data;
-      this.log.debug('Router response:', data);
+      // Check if login was successful by inspecting the login response (look for a session cookie or status)
+      if (loginResponse.status === 200 && loginResponse.headers['set-cookie']) {
+        this.log.info('Login successful. Session established.');
 
-      // Example: Check the router's online status
-      return { online: data.online }; // Adjust based on your router's API
+        // Step 2: Fetch router stats (or other data) using the session cookie
+        const statsResponse = await axios.get(statsUrl, {
+          headers: {
+            Cookie: loginResponse.headers['set-cookie'].join('; '), // Use the session cookie from login
+          },
+          withCredentials: true,
+        });
+
+        // Example: Parse the HTML for the router's status
+        const stats = this.parseRouterStats(statsResponse.data); // Adjust this based on the actual HTML or response
+
+        return { online: stats.online };
+      } else {
+        throw new Error('Login failed');
+      }
     } catch (error) {
       this.log.error('Error failed to fetch router stats:', (error as Error).message);
       return { online: false }; // Default to offline on error
+    }
+  }
+
+  /**
+   * Helper function to parse the router's status from the HTML response.
+   * You need to adjust this based on the actual HTML structure of the response.
+   */
+  private parseRouterStats(html: string): { online: boolean } {
+    // Example: Parse the HTML for the status (this will depend on the actual HTML element that indicates online status)
+    const onlineStatusMatch = html.match(/<div class="status">Online<\/div>/); // Update this with the actual HTML element that indicates online status
+    
+    if (onlineStatusMatch) {
+      return { online: true };
+    } else {
+      return { online: false };
     }
   }
 

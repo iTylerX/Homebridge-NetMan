@@ -2,7 +2,7 @@
   "name": "homebridge-netman",
   "displayName": "Homebridge-NetMan",
   "type": "module",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "description": "A Homebridge plugin to monitor devices connected to your network, track online/offline status, display Wi-Fi stats, and provide optional router controls.",
   "author": "Tyler Grove",
