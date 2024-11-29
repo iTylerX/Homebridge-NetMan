@@ -1,0 +1,12 @@
+{
+    "platforms": [
+      {
+        "platform": "Homebridge-NetMan",
+        "name": "Homebridge-NetMan",
+        "routerIp": "192.168.1.1",
+        "username": "admin",
+        "password": "adminpassword"
+      }
+    ]
+  }
+  
